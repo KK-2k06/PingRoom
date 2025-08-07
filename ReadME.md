@@ -1,79 +1,152 @@
-💡 Project Name: PingRoom (working title)
-🧩 Core Idea:
-A modern chat app with:
+# 🔗 PingRoom (Working Title)
 
-A default general chat room
+A modern chat application inspired by Discord and temporary meeting links — focused on real-time communication, privacy, emotion-aware chat, and simplicity.
 
-Temporary, link-based joinable chat rooms (like meeting links)
+---
 
-Once the host ends the room, the chat disappears or is archived
+## 🧩 Core Concept
 
-Clean UI/UX for both desktop and mobile
+LinkChat is a real-time web chat app featuring:
+- A *General Chat Room* for all users
+- *Temporary, link-based rooms* (e.g., /join/xyz123)
+- *Ephemeral chats* that disappear or get archived when ended
+- *Emotion-tagged messages* and optional *AI summaries*
+- Clean, responsive design for web
 
-🛠 MVP Feature Set
-✅ 1. General Chat Room (Always Available)
-Everyone joins here by default
+---
 
-Real-time text messaging via WebSockets
+## 🛠 Tech Stack
 
-Display usernames, timestamps, message editing/deletion
+| Layer        | Technology                         |
+|--------------|-------------------------------------|
+| Frontend     | React.js / Next.js (App Router), Tailwind CSS |
+| Backend      | Node.js + Express / Nest.js        |
+| Real-time    | Socket.IO / WebRTC DataChannels     |
+| Database     | MongoDB / PostgreSQL                |
+| Auth         | Firebase Auth / Passport.js (optional) |
+| Hosting      | Vercel (Frontend), Railway/Render (Backend) |
+| AI Features  | OpenAI / Claude / Gemini API        |
 
-✅ 2. Temporary "Link-Rooms"
-Host clicks “Create Room” → generates a unique invite link (e.g., /join/xyz123)
+---
 
-Others can join via link
+## ✅ MVP Feature Set
 
-Host can:
+### 1. General Chat Room
+- Always available
+- Real-time messages (WebSockets)
+- Guest user handles (e.g., Guest#1234)
+- Timestamps, edit/delete options
 
-Set room title
+### 2. Temporary "Link-Rooms"
+- Host creates room → gets link (e.g., /join/XYZ123)
+- Others join via link
+- Host controls: title, kick, end room
+- Chat disappears or gets archived on end
 
-Kick participants
+### 3. Real-Time Messaging
+- Socket.IO communication
+- Messages sync across all clients instantly
 
-End room → Chat gets closed/archived
+### 4. User Identification
+- Temporary guest names
+- Optional auth (register/login)
 
-✅ 3. Real-Time Messaging
-Powered by WebSockets (e.g., using Socket.IO or WebRTC data channels)
+---
 
-Messages sync instantly across all participants
+## 🌟 Stretch Features
 
-✅ 4. User Identification
-Temporary user handles (e.g., Guest#1234)
+### 💬 Emotion-Based Chat Threads
+- Users tag messages with emotions (😢, 😠, 🎉)
+- UI reacts (color/animation) to emotion
+- Sentiment analysis via AI for auto-tagging
 
-Option to register/login (basic auth or social login) for saved history and settings
+### 🧠 AI-Powered Smart Summary
+- On ending a room, AI generates a discussion summary
+- Useful for teams, study groups
 
-🌟 Innovative / Useful Add-ons (Stretch Goals)
-💬 Message Threads
-Allow users to reply to specific messages for clarity in group chats
+### 🔒 Self-Destructing Messages
+- Host can set TTL: 30s, 1m, etc.
+- Messages auto-delete after timer
 
-🧠 AI-Powered Smart Summary
-On closing a link-room, generate a quick AI-based summary of the discussion
+### 📎 Lightweight File Sharing
+- Temporary image/doc sharing within rooms
 
-Useful for teams or study groups
+---
 
-🔒 Self-Destruct Timers for Messages
-Host can enable optional disappearing messages (after 30s, 1m, etc.)
+## 🧪 MVP Flow Example
 
-📎 Lightweight File Sharing
-Allow users to upload/share files in temporary rooms with file preview
+1. User enters General Chat as Guest
+2. Clicks “Create Link Room” → gets URL
+3. Others join via link
+4. Host manages participants and ends room
+5. Optionally: AI generates summary
 
-🧪 Tech Stack (Recommended)
-Layer	Tech Suggestions
-Frontend	React.js (or Next.js with App Router), TailwindCSS
-Realtime Comm	Socket.IO or WebRTC
-Backend	Node.js + Express / Nest.js
-Database	MongoDB or PostgreSQL (for user/room data)
-Auth	Firebase Auth / Passport.js (Optional)
-Hosting	Vercel (Frontend) + Railway/Render (Backend)
+---
 
-🧪 MVP Flow Example
-User enters General Chat as Guest
+## 🧱 Data Model Sample
 
-User clicks “Create Link Room”
 
-Gets a link like linkchat.app/join/XYZ456
+Room: {
+  roomId: String,
+  hostId: String,
+  title: String,
+  messages: [ { text, sender, timestamp } ],
+  participants: [userId],
+  expiresAt: Date,
+  isArchived: Boolean
+}
 
-Others join → Room opens
 
-Host sees “End Room” → Clicks it → Room disappears
+---
 
-AI generates summary if enabled
+## 📦 Development Roadmap
+
+### Phase 1: Setup
+- Project scaffolding (frontend/backend)
+- Socket.IO setup
+- MongoDB/Postgres config
+
+### Phase 2: MVP
+- General + temporary rooms
+- Real-time chat
+- Basic UI + guest auth
+
+### Phase 3: Core Features
+- Host controls
+- Room expiration
+- Chat archiving
+
+### Phase 4: AI + Emotions
+- Emotion tagging UI
+- AI-based sentiment analysis + summaries
+
+### Phase 5: QA & Deployment
+- Final testing
+- Host on Vercel + Railway
+- Responsive design polish
+
+---
+
+## 🚀 Launch Strategy
+
+- Soft launch with early users
+- Add branding + domain
+- SEO + social media + demo content
+- Target use cases: Study groups, therapy chats, flash meetings
+
+---
+
+## 🔧 Tools to Use
+
+| Purpose        | Tool            |
+|----------------|------------------|
+| Version Control| Git + GitHub     |
+| Design         | Figma            |
+| API Testing    | Postman          |
+| Deployment     | Vercel + Railway |
+| AI Integration | OpenAI, Gemini, Claude |
+| DB GUI         | MongoDB Compass / Supabase UI |
+
+---
+
+> 💡 *Future-ready, privacy-respecting, emotionally intelligent chat.*
