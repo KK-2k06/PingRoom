@@ -1,6 +1,4 @@
-Here’s a clear and simple MVP (Minimum Viable Product) plan for your innovative chat app — think Discord + temporary invite-based rooms. I’ve also added features that are practical and impactful.
-
-💡 Project Name: LinkChat (working title)
+💡 Project Name: PingRoom (working title)
 🧩 Core Idea:
 A modern chat app with:
 
