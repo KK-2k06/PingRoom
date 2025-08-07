@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-gray-600;
+  }
+  
+  body {
+    @apply bg-chat-bg text-white;
+  }
+}
+
+@layer components {
+  /* Custom scrollbar */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #4a4a4a #2f3136;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #2f3136;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #4a4a4a;
+    border-radius: 4px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #5a5a5a;
+  }
+  
+  /* Message animations */
+  .message-enter {
+    animation: slideIn 0.3s ease-out;
+  }
+  
+  /* Status indicators */
+  .status-online {
+    @apply bg-chat-online;
+  }
+  
+  .status-idle {
+    @apply bg-chat-idle;
+  }
+  
+  .status-dnd {
+    @apply bg-chat-dnd;
+  }
+  
+  .status-offline {
+    @apply bg-chat-offline;
+  }
+  
+  /* Emotion colors */
+  .emotion-happy {
+    @apply bg-accent-400 text-white;
+  }
+  
+  .emotion-sad {
+    @apply bg-blue-400 text-white;
+  }
+  
+  .emotion-angry {
+    @apply bg-red-400 text-white;
+  }
+  
+  .emotion-excited {
+    @apply bg-yellow-400 text-white;
+  }
+  
+  .emotion-neutral {
+    @apply bg-gray-400 text-white;
+  }
+  
+  /* Button styles */
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md font-medium transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-chat-sidebar hover:bg-chat-hover text-white px-4 py-2 rounded-md font-medium transition-colors duration-200;
+  }
+  
+  .btn-accent {
+    @apply bg-accent-500 hover:bg-accent-600 text-white px-4 py-2 rounded-md font-medium transition-colors duration-200;
+  }
+  
+  /* Input styles */
+  .input-field {
+    @apply bg-chat-input border border-gray-600 rounded-md px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
+  }
+  
+  /* Card styles */
+  .card {
+    @apply bg-chat-sidebar rounded-lg border border-gray-700 shadow-lg;
+  }
+  
+  /* Sidebar styles */
+  .sidebar {
+    @apply bg-chat-sidebar border-r border-gray-700;
+  }
+  
+  /* Message styles */
+  .message {
+    @apply bg-chat-message rounded-lg p-3 mb-2 hover:bg-chat-hover transition-colors duration-200;
+  }
+}

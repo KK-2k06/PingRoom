@@ -1,0 +1,199 @@
+[1mdiff --git a/ReadME.md b/ReadME.md[m
+[1mindex 3166d29..e767dcb 100644[m
+[1m--- a/ReadME.md[m
+[1m+++ b/ReadME.md[m
+[36m@@ -1,81 +1,152 @@[m
+[31m-Here’s a clear and simple MVP (Minimum Viable Product) plan for your innovative chat app — think Discord + temporary invite-based rooms. I’ve also added features that are practical and impactful.[m
+[32m+[m[32m# 🔗 LinkChat (Working Title)[m
+ [m
+[31m-💡 Project Name: LinkChat (working title)[m
+[31m-🧩 Core Idea:[m
+[31m-A modern chat app with:[m
+[32m+[m[32mA modern chat application inspired by Discord and temporary meeting links — focused on real-time communication, privacy, emotion-aware chat, and simplicity.[m
+ [m
+[31m-A default general chat room[m
+[32m+[m[32m---[m
+ [m
+[31m-Temporary, link-based joinable chat rooms (like meeting links)[m
+[32m+[m[32m## 🧩 Core Concept[m
+ [m
+[31m-Once the host ends the room, the chat disappears or is archived[m
+[32m+[m[32mLinkChat is a real-time web chat app featuring:[m
+[32m+[m[32m- A **General Chat Room** for all users[m
+[32m+[m[32m- **Temporary, link-based rooms** (e.g., `/join/xyz123`)[m
+[32m+[m[32m- **Ephemeral chats** that disappear or get archived when ended[m
+[32m+[m[32m- **Emotion-tagged messages** and optional **AI summaries**[m
+[32m+[m[32m- Clean, responsive design for web[m
+ [m
+[31m-Clean UI/UX for both desktop and mobile[m
+[32m+[m[32m---[m
+ [m
+[31m-🛠 MVP Feature Set[m
+[31m-✅ 1. General Chat Room (Always Available)[m
+[31m-Everyone joins here by default[m
+[32m+[m[32m## 🛠 Tech Stack[m
+ [m
+[31m-Real-time text messaging via WebSockets[m
+[32m+[m[32m| Layer        | Technology                         |[m
+[32m+[m[32m|--------------|-------------------------------------|[m
+[32m+[m[32m| Frontend     | React.js / Next.js (App Router), Tailwind CSS |[m
+[32m+[m[32m| Backend      | Node.js + Express / Nest.js        |[m
+[32m+[m[32m| Real-time    | Socket.IO / WebRTC DataChannels     |[m
+[32m+[m[32m| Database     | MongoDB / PostgreSQL                |[m
+[32m+[m[32m| Auth         | Firebase Auth / Passport.js (optional) |[m
+[32m+[m[32m| Hosting      | Vercel (Frontend), Railway/Render (Backend) |[m
+[32m+[m[32m| AI Features  | OpenAI / Claude / Gemini API        |[m
+ [m
+[31m-Display usernames, timestamps, message editing/deletion[m
+[32m+[m[32m---[m
+ [m
+[31m-✅ 2. Temporary "Link-Rooms"[m
+[31m-Host clicks “Create Room” → generates a unique invite link (e.g., /join/xyz123)[m
+[32m+[m[32m## ✅ MVP Feature Set[m
+ [m
+[31m-Others can join via link[m
+[32m+[m[32m### 1. General Chat Room[m
+[32m+[m[32m- Always available[m
+[32m+[m[32m- Real-time messages (WebSockets)[m
+[32m+[m[32m- Guest user handles (e.g., Guest#1234)[m
+[32m+[m[32m- Timestamps, edit/delete options[m
+ [m
+[31m-Host can:[m
+[32m+[m[32m### 2. Temporary "Link-Rooms"[m
+[32m+[m[32m- Host creates room → gets link (e.g., `/join/XYZ123`)[m
+[32m+[m[32m- Others join via link[m
+[32m+[m[32m- Host controls: title, kick, end room[m
+[32m+[m[32m- Chat disappears or gets archived on end[m
+ [m
+[31m-Set room title[m
+[32m+[m[32m### 3. Real-Time Messaging[m
+[32m+[m[32m- Socket.IO communication[m
+[32m+[m[32m- Messages sync across all clients instantly[m
+ [m
+[31m-Kick participants[m
+[32m+[m[32m### 4. User Identification[m
+[32m+[m[32m- Temporary guest names[m
+[32m+[m[32m- Optional auth (register/login)[m
+ [m
+[31m-End room → Chat gets closed/archived[m
+[32m+[m[32m---[m
+ [m
+[31m-✅ 3. Real-Time Messaging[m
+[31m-Powered by WebSockets (e.g., using Socket.IO or WebRTC data channels)[m
+[32m+[m[32m## 🌟 Stretch Features[m
+ [m
+[31m-Messages sync instantly across all participants[m
+[32m+[m[32m### 💬 Emotion-Based Chat Threads[m
+[32m+[m[32m- Users tag messages with emotions (😢, 😠, 🎉)[m
+[32m+[m[32m- UI reacts (color/animation) to emotion[m
+[32m+[m[32m- Sentiment analysis via AI for auto-tagging[m
+ [m
+[31m-✅ 4. User Identification[m
+[31m-Temporary user handles (e.g., Guest#1234)[m
+[32m+[m[32m### 🧠 AI-Powered Smart Summary[m
+[32m+[m[32m- On ending a room, AI generates a discussion summary[m
+[32m+[m[32m- Useful for teams, study groups[m
+ [m
+[31m-Option to register/login (basic auth or social login) for saved history and settings[m
+[32m+[m[32m### 🔒 Self-Destructing Messages[m
+[32m+[m[32m- Host can set TTL: 30s, 1m, etc.[m
+[32m+[m[32m- Messages auto-delete after timer[m
+ [m
+[31m-🌟 Innovative / Useful Add-ons (Stretch Goals)[m
+[31m-💬 Message Threads[m
+[31m-Allow users to reply to specific messages for clarity in group chats[m
+[32m+[m[32m### 📎 Lightweight File Sharing[m
+[32m+[m[32m- Temporary image/doc sharing within rooms[m
+ [m
+[31m-🧠 AI-Powered Smart Summary[m
+[31m-On closing a link-room, generate a quick AI-based summary of the discussion[m
+[32m+[m[32m---[m
+ [m
+[31m-Useful for teams or study groups[m
+[32m+[m[32m## 🧪 MVP Flow Example[m
+ [m
+[31m-🔒 Self-Destruct Timers for Messages[m
+[31m-Host can enable optional disappearing messages (after 30s, 1m, etc.)[m
+[32m+[m[32m1. User enters General Chat as Guest[m
+[32m+[m[32m2. Clicks “Create Link Room” → gets URL[m
+[32m+[m[32m3. Others join via link[m
+[32m+[m[32m4. Host manages participants and ends room[m
+[32m+[m[32m5. Optionally: AI generates summary[m
+ [m
+[31m-📎 Lightweight File Sharing[m
+[31m-Allow users to upload/share files in temporary rooms with file preview[m
+[32m+[m[32m---[m
+ [m
+[31m-🧪 Tech Stack (Recommended)[m
+[31m-Layer	Tech Suggestions[m
+[31m-Frontend	React.js (or Next.js with App Router), TailwindCSS[m
+[31m-Realtime Comm	Socket.IO or WebRTC[m
+[31m-Backend	Node.js + Express / Nest.js[m
+[31m-Database	MongoDB or PostgreSQL (for user/room data)[m
+[31m-Auth	Firebase Auth / Passport.js (Optional)[m
+[31m-Hosting	Vercel (Frontend) + Railway/Render (Backend)[m
+[32m+[m[32m## 🧱 Data Model Sample[m
+ [m
+[31m-🧪 MVP Flow Example[m
+[31m-User enters General Chat as Guest[m
+[32m+[m[32m```[m
+[32m+[m[32mRoom: {[m
+[32m+[m[32m  roomId: String,[m
+[32m+[m[32m  hostId: String,[m
+[32m+[m[32m  title: String,[m
+[32m+[m[32m  messages: [ { text, sender, timestamp } ],[m
+[32m+[m[32m  participants: [userId],[m
+[32m+[m[32m  expiresAt: Date,[m
+[32m+[m[32m  isArchived: Boolean[m
+[32m+[m[32m}[m
+[32m+[m[32m```[m
+ [m
+[31m-User clicks “Create Link Room”[m
+[32m+[m[32m---[m
+ [m
+[31m-Gets a link like linkchat.app/join/XYZ456[m
+[32m+[m[32m## 📦 Development Roadmap[m
+ [m
+[31m-Others join → Room opens[m
+[32m+[m[32m### Phase 1: Setup[m
+[32m+[m[32m- Project scaffolding (frontend/backend)[m
+[32m+[m[32m- Socket.IO setup[m
+[32m+[m[32m- MongoDB/Postgres config[m
+ [m
+[31m-Host sees “End Room” → Clicks it → Room disappears[m
+[32m+[m[32m### Phase 2: MVP[m
+[32m+[m[32m- General + temporary rooms[m
+[32m+[m[32m- Real-time chat[m
+[32m+[m[32m- Basic UI + guest auth[m
+ [m
+[31m-AI generates summary if enabled[m
+\ No newline at end of file[m
+[32m+[m[32m### Phase 3: Core Features[m
+[32m+[m[32m- Host controls[m
+[32m+[m[32m- Room expiration[m
+[32m+[m[32m- Chat archiving[m
+[32m+[m
+[32m+[m[32m### Phase 4: AI + Emotions[m
+[32m+[m[32m- Emotion tagging UI[m
+[32m+[m[32m- AI-based sentiment analysis + summaries[m
+[32m+[m
+[32m+[m[32m### Phase 5: QA & Deployment[m
+[32m+[m[32m- Final testing[m
+[32m+[m[32m- Host on Vercel + Railway[m
+[32m+[m[32m- Responsive design polish[m
+[32m+[m
+[32m+[m[32m---[m
+[32m+[m
+[32m+[m[32m## 🚀 Launch Strategy[m
+[32m+[m
+[32m+[m[32m- Soft launch with early users[m
+[32m+[m[32m- Add branding + domain[m
+[32m+[m[32m- SEO + social media + demo content[m
+[32m+[m[32m- Target use cases: Study groups, therapy chats, flash meetings[m
+[32m+[m
+[32m+[m[32m---[m
+[32m+[m
+[32m+[m[32m## 🔧 Tools to Use[m
+[32m+[m
+[32m+[m[32m| Purpose        | Tool            |[m
+[32m+[m[32m|-----------
