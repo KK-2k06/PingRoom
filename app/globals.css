@@ -13,6 +13,32 @@
 }
 
 @layer components {
+  /* Custom scrollbar for text area */
+  /* Unique scrollbar just for textarea */
+.textarea-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #edebeb transparent; /* thumb color + transparent track */
+}
+
+.textarea-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.textarea-scrollbar::-webkit-scrollbar-track {
+  background-color: #2f3136; /* match textarea bg */
+  border-radius: 0.5rem; /* same as textarea's rounded-lg */
+}
+
+.textarea-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #4a4a4a;
+  border-radius: 0.5rem; /* match track */
+  background-clip: padding-box;
+}
+
+.textarea-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #5a5a5a;
+}
+
   /* Custom scrollbar */
   .custom-scrollbar {
     scrollbar-width: thin;
@@ -25,11 +51,12 @@
   
   .custom-scrollbar::-webkit-scrollbar-track {
     background: #2f3136;
+    border-radius: 9999px;
   }
   
   .custom-scrollbar::-webkit-scrollbar-thumb {
     background: #4a4a4a;
-    border-radius: 4px;
+    border-radius: 9999px;
   }
   
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
@@ -60,11 +87,11 @@
   
   /* Emotion colors */
   .emotion-happy {
-    @apply bg-accent-400 text-white;
+    @apply bg-green-500 text-white;
   }
   
   .emotion-sad {
-    @apply bg-blue-400 text-white;
+    @apply bg-orange-400 text-white;
   }
   
   .emotion-angry {
@@ -72,7 +99,7 @@
   }
   
   .emotion-excited {
-    @apply bg-yellow-400 text-white;
+    @apply bg-blue-400 text-white;
   }
   
   .emotion-neutral {

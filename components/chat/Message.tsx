@@ -27,10 +27,10 @@ const emotionIcons = {
 }
 
 const emotionColors = {
-  happy: 'bg-yellow-400 text-yellow-900',
-  sad: 'bg-blue-400 text-blue-900',
+  happy: 'bg-green-400 text-green-900',
+  sad: 'bg-orange-400 text-orange-900',
   angry: 'bg-red-400 text-red-900',
-  excited: 'bg-orange-400 text-orange-900',
+  excited: 'bg-blue-400 text-blue-900',
   neutral: 'bg-gray-400 text-gray-900',
 }
 
