@@ -9,11 +9,11 @@ interface ChatInputProps {
 }
 
 const emotions = [
-  { key: 'happy', label: 'Happy', icon: Smile, color: 'text-yellow-400' },
-  { key: 'sad', label: 'Sad', icon: Frown, color: 'text-blue-400' },
-  { key: 'angry', label: 'Angry', icon: Angry, color: 'text-red-400' },
-  { key: 'excited', label: 'Excited', icon: Zap, color: 'text-orange-400' },
-  { key: 'neutral', label: 'Neutral', icon: Heart, color: 'text-gray-400' },
+  { key: 'happy', label: 'Happy', icon: Smile, color: 'text-green-400', hoverColor: 'text-green-300' },
+  { key: 'sad', label: 'Sad', icon: Frown, color: 'text-orange-400', hoverColor: 'text-orange-300' },
+  { key: 'angry', label: 'Angry', icon: Angry, color: 'text-red-400', hoverColor: 'text-red-300' },
+  { key: 'excited', label: 'Excited', icon: Zap, color: 'text-blue-400', hoverColor: 'text-blue-300' },
+  { key: 'neutral', label: 'Neutral', icon: Heart, color: 'text-gray-400', hoverColor: 'text-gray-300' },
 ]
 
 export function ChatInput({ onSendMessage, placeholder = "Type a message...", disabled = false }: ChatInputProps) {
@@ -74,7 +74,8 @@ export function ChatInput({ onSendMessage, placeholder = "Type a message...", di
       {selectedEmotion && (
         <div className="flex items-center space-x-2 mb-2">
           <span className="text-sm text-gray-400">Emotion:</span>
-          <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-300 text-slate-900">
+          <span
+  className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-sky-300 text-slate-900`}>
             {emotions.find(e => e.key === selectedEmotion)?.label}
           </span>
           <button
@@ -94,7 +95,7 @@ export function ChatInput({ onSendMessage, placeholder = "Type a message...", di
             className="p-2 text-gray-400 hover:text-white transition-colors duration-200 rounded-md hover:bg-chat-hover"
             title="Add emotion"
           >
-            <Smile className="w-5 h-5" />
+            <Smile className="w-5 h-5 text-yellow-300 mb-2.5" />
           </button>
           
           {showEmotions && (
@@ -104,10 +105,10 @@ export function ChatInput({ onSendMessage, placeholder = "Type a message...", di
                   <button
                     key={emotion.key}
                     onClick={() => handleEmotionSelect(emotion.key)}
-                    className={`p-2 rounded-md transition-colors duration-200 ${
-                      selectedEmotion === emotion.key
-                        ? 'bg-emerald-400 text-white'
-                        : 'text-gray-400 hover:text-white hover:bg-chat-hover'
+                    className={`p-2 rounded-md transition-colors duration-200
+                      ${selectedEmotion === emotion.key
+                        ? `bg-${emotion.color.slice(5)} text-white`    
+                        : `${emotion.color} hover:${emotion.hoverColor}`
                     }`}
                     title={emotion.label}
                   >

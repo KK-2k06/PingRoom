@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Sidebar } from '@/components/chat/Sidebar'
 import { Message } from '@/components/chat/Message'
 import { ChatInput } from '@/components/chat/ChatInput'
@@ -55,6 +55,12 @@ export default function Home() {
     { id: '5', name: 'CharmingTiger#7890', status: 'dnd' },
   ])
   const [isClient, setIsClient] = useState(false)
+  const messagesEndRef = useRef<HTMLDivElement>(null)
+
+  // Scroll to bottom function
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   // Ensure client-side rendering
   useEffect(() => {
@@ -112,6 +118,11 @@ export default function Home() {
       setMessages(initialMessages)
     }
   }, [isClient])
+
+  // Auto-scroll to bottom when messages change
+  useEffect(() => {
+    scrollToBottom()
+  }, [messages])
 
   const handleSendMessage = (content: string, emotion?: string) => {
     const newMessage: ChatMessage = {
@@ -218,6 +229,7 @@ export default function Home() {
                 onReact={handleMessageReact}
               />
             ))}
+            <div ref={messagesEndRef} />
           </div>
         </div>
 
