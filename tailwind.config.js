@@ -70,6 +70,17 @@ module.exports = {
           idle: '#faa61a',
           dnd: '#f04747',
           offline: '#747f8d',
+        },
+        // Light theme colors
+        light: {
+          bg: '#ffffff',
+          sidebar: '#f8fafc',
+          message: '#f1f5f9',
+          input: '#e2e8f0',
+          hover: '#cbd5e1',
+          text: '#1e293b',
+          textSecondary: '#64748b',
+          border: '#e2e8f0',
         }
       },
       fontFamily: {
@@ -95,4 +106,5 @@ module.exports = {
     },
   },
   plugins: [],
+  darkMode: 'class',
 }

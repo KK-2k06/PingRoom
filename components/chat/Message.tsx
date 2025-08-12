@@ -48,7 +48,7 @@ export function Message({
   const EmotionIcon = emotion ? emotionIcons[emotion] : null
 
   return (
-    <div className="message group animate-fade-in">
+    <div className="message group animate-fade-in bg-chat-message dark:bg-chat-message rounded-lg p-3 mb-2 hover:bg-chat-hover dark:hover:bg-chat-hover transition-colors duration-200">
       <div className="flex items-start space-x-3">
         {/* Avatar */}
         <div className="relative flex-shrink-0">
@@ -60,17 +60,17 @@ export function Message({
             )}
           </div>
           {sender.status && (
-            <div className={`absolute -bottom-1 -right-1 w-3 h-3 rounded-full border-2 border-chat-bg status-${sender.status}`} />
+            <div className={`absolute -bottom-1 -right-1 w-3 h-3 rounded-full border-2 border-chat-bg dark:border-chat-bg status-${sender.status}`} />
           )}
         </div>
 
         {/* Message Content */}
         <div className="flex-1 min-w-0">
           <div className="flex items-center space-x-2 mb-1">
-            <span className="font-semibold text-white hover:underline cursor-pointer">
+            <span className="font-semibold text-white dark:text-white hover:underline cursor-pointer">
               {sender.name}
             </span>
-            <span className="text-xs text-gray-400">
+            <span className="text-xs text-gray-400 dark:text-gray-400">
               {formatTime(timestamp)}
             </span>
             {emotion && (
@@ -81,7 +81,7 @@ export function Message({
             )}
           </div>
           
-          <div className="text-gray-200 leading-relaxed">
+          <div className="text-gray-200 dark:text-gray-200 leading-relaxed">
             {content}
           </div>
 
@@ -112,7 +112,7 @@ export function Message({
                 <button
                   key={emotionKey}
                   onClick={() => onReact?.(id, emotionKey)}
-                  className="text-gray-400 hover:text-white transition-colors duration-200 p-1 rounded hover:bg-chat-hover"
+                  className="text-gray-400 dark:text-gray-400 hover:text-white dark:hover:text-white transition-colors duration-200 p-1 rounded hover:bg-chat-hover dark:hover:bg-chat-hover"
                   title={`React with ${emotionKey}`}
                 >
                   <Icon className="w-4 h-4" />

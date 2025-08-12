@@ -12,6 +12,60 @@
   }
 }
 
+/* Light theme overrides */
+.light * {
+  border-color: #e2e8f0;
+}
+
+.light body {
+  background-color: #ffffff;
+  color: #1e293b;
+}
+
+.light .bg-chat-bg {
+  background-color: #ffffff;
+}
+
+.light .bg-chat-sidebar {
+  background-color: #f8fafc;
+}
+
+.light .bg-chat-message {
+  background-color: #f1f5f9;
+}
+
+.light .bg-chat-input {
+  background-color: #e2e8f0;
+}
+
+.light .bg-chat-hover {
+  background-color: #cbd5e1;
+}
+
+.light .text-white {
+  color: #1e293b;
+}
+
+.light .text-gray-200 {
+  color: #1e293b;
+}
+
+.light .text-gray-300 {
+  color: #64748b;
+}
+
+.light .text-gray-400 {
+  color: #64748b;
+}
+
+.light .border-gray-600 {
+  border-color: #e2e8f0;
+}
+
+.light .border-gray-700 {
+  border-color: #e2e8f0;
+}
+
 @layer components {
   /* Custom scrollbar for text area */
   /* Unique scrollbar just for textarea */
@@ -39,6 +93,19 @@
   background-color: #5a5a5a;
 }
 
+/* Light theme scrollbar overrides */
+.light .textarea-scrollbar::-webkit-scrollbar-track {
+  background-color: #f8fafc;
+}
+
+.light .textarea-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+}
+
+.light .textarea-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+}
+
   /* Custom scrollbar */
   .custom-scrollbar {
     scrollbar-width: thin;
@@ -61,6 +128,23 @@
   
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: #5a5a5a;
+  }
+
+  /* Light theme scrollbar overrides */
+  .light .custom-scrollbar {
+    scrollbar-color: #cbd5e1 #f8fafc;
+  }
+  
+  .light .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f8fafc;
+  }
+  
+  .light .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+  }
+  
+  .light .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
   }
   
   /* Message animations */
@@ -129,13 +213,7 @@
     @apply bg-chat-sidebar rounded-lg border border-gray-700 shadow-lg;
   }
   
-  /* Sidebar styles */
-  .sidebar {
-    @apply bg-chat-sidebar border-r border-gray-700;
-  }
+  /* Sidebar styles - now handled in component */
   
-  /* Message styles */
-  .message {
-    @apply bg-chat-message rounded-lg p-3 mb-2 hover:bg-chat-hover transition-colors duration-200;
-  }
+  /* Message styles - now handled in component */
 }

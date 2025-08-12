@@ -60,11 +60,11 @@ export function Sidebar({
   const currentRoomData = rooms.find(room => room.id === currentRoom)
 
   return (
-    <div className="sidebar w-64 flex flex-col h-full">
+    <div className="sidebar w-64 flex flex-col h-full bg-chat-sidebar dark:bg-chat-sidebar border-r border-gray-700 dark:border-gray-700 transition-colors duration-200">
       {/* Header */}
-      <div className="p-4 border-b border-gray-700">
-        <div className="flex items-center justify-between">
-          <h1 className="text-xl font-bold text-white">PingRoom</h1>
+              <div className="p-4 border-b border-gray-700 dark:border-gray-700">
+          <div className="flex items-center justify-between">
+            <h1 className="text-xl font-bold text-white dark:text-white">PingRoom</h1>
           <Button
             onClick={onCreateRoom}
             size="sm"
@@ -78,13 +78,13 @@ export function Sidebar({
 
       {/* Current Room Info */}
       {currentRoomData && (
-        <div className="p-4 border-b border-gray-700">
+        <div className="p-4 border-b border-gray-700 dark:border-gray-700">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Hash className="w-5 h-5 text-primary-400" />
               <div>
-                <h2 className="font-semibold text-white">{currentRoomData.name}</h2>
-                <p className="text-xs text-gray-400">
+                <h2 className="font-semibold text-white dark:text-white">{currentRoomData.name}</h2>
+                <p className="text-xs text-gray-400 dark:text-gray-400">
                   {currentRoomData.participants} participants
                   {currentRoomData.type === 'temporary' && ' • Temporary'}
                 </p>
@@ -99,14 +99,14 @@ export function Sidebar({
               </button>
               
               {showRoomOptions === currentRoom && (
-                <div className="absolute right-0 top-full mt-1 bg-chat-sidebar border border-gray-600 rounded-lg shadow-lg p-1 z-10 min-w-32">
+                <div className="absolute right-0 top-full mt-1 bg-chat-sidebar dark:bg-chat-sidebar border border-gray-600 dark:border-gray-600 rounded-lg shadow-lg p-1 z-10 min-w-32">
                   {onEditRoom && (
                     <button
                       onClick={() => {
                         onEditRoom(currentRoom)
                         setShowRoomOptions(null)
                       }}
-                      className="w-full flex items-center space-x-2 px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-chat-hover rounded transition-colors duration-200"
+                      className="w-full flex items-center space-x-2 px-3 py-2 text-sm text-gray-300 dark:text-gray-300 hover:text-white dark:hover:text-white hover:bg-chat-hover dark:hover:bg-chat-hover rounded transition-colors duration-200"
                     >
                       <Edit className="w-4 h-4" />
                       <span>Edit Room</span>
@@ -136,12 +136,12 @@ export function Sidebar({
         {/* Rooms */}
         <div className="p-4">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-sm font-semibold text-gray-300 uppercase tracking-wider">
+            <h3 className="text-sm font-semibold text-gray-300 dark:text-gray-300 uppercase tracking-wider">
               Rooms
             </h3>
             <button
               onClick={() => setShowUserList(!showUserList)}
-              className="text-gray-400 hover:text-white transition-colors duration-200"
+              className="text-gray-400 dark:text-gray-400 hover:text-white dark:hover:text-white transition-colors duration-200"
             >
               <Users className="w-4 h-4" />
             </button>
@@ -155,7 +155,7 @@ export function Sidebar({
                 className={`w-full flex items-center space-x-2 px-3 py-2 rounded-md transition-colors duration-200 text-left ${
                   currentRoom === room.id
                     ? 'bg-primary-600 text-white'
-                    : 'text-gray-300 hover:text-white hover:bg-chat-hover'
+                    : 'text-gray-300 dark:text-gray-300 hover:text-white dark:hover:text-white hover:bg-chat-hover dark:hover:bg-chat-hover'
                 }`}
               >
                 <MessageCircle className="w-4 h-4" />
@@ -178,8 +178,8 @@ export function Sidebar({
 
         {/* Users */}
         {showUserList && (
-          <div className="p-4 border-t border-gray-700">
-            <h3 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-3">
+          <div className="p-4 border-t border-gray-700 dark:border-gray-700">
+            <h3 className="text-sm font-semibold text-gray-300 dark:text-gray-300 uppercase tracking-wider mb-3">
               Online — {users.filter(u => u.status === 'online').length}
             </h3>
             
@@ -187,18 +187,18 @@ export function Sidebar({
               {users.map((user) => (
                 <div
                   key={user.id}
-                  className="flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-chat-hover transition-colors duration-200"
+                  className="flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-chat-hover dark:hover:bg-chat-hover transition-colors duration-200"
                 >
                   <div className="relative">
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-400 to-secondary-500 flex items-center justify-center text-white font-bold text-xs">
                       {user.name.charAt(0).toUpperCase()}
                     </div>
-                    <div className={`absolute -bottom-1 -right-1 w-3 h-3 rounded-full border-2 border-chat-bg status-${user.status}`} />
+                    <div className={`absolute -bottom-1 -right-1 w-3 h-3 rounded-full border-2 border-chat-bg dark:border-chat-bg status-${user.status}`} />
                   </div>
                   
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center space-x-1">
-                      <span className="text-sm text-gray-200 truncate">{user.name}</span>
+                      <span className="text-sm text-gray-200 dark:text-gray-200 truncate">{user.name}</span>
                       {user.isHost && <Crown className="w-3 h-3 text-yellow-400" />}
                     </div>
                   </div>
@@ -210,16 +210,16 @@ export function Sidebar({
       </div>
 
       {/* Footer */}
-      <div className="p-4 border-t border-gray-700">
+      <div className="p-4 border-t border-gray-700 dark:border-gray-700">
         <div className="flex items-center space-x-2">
           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-400 to-secondary-500 flex items-center justify-center text-white font-bold text-xs">
             {guestName ? guestName.charAt(0).toUpperCase() : 'G'}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm text-gray-200 truncate">{guestName || 'Guest'}</p>
+            <p className="text-sm text-gray-200 dark:text-gray-200 truncate">{guestName || 'Guest'}</p>
             <p className="text-xs text-green-400">Online</p>
           </div>
-          <button className="p-1 text-gray-400 hover:text-white transition-colors duration-200">
+          <button className="p-1 text-gray-400 dark:text-gray-400 hover:text-white dark:hover:text-white transition-colors duration-200">
             <Settings className="w-4 h-4" />
           </button>
         </div>

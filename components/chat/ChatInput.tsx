@@ -69,18 +69,18 @@ export function ChatInput({ onSendMessage, placeholder = "Type a message...", di
   }, [showEmotions])
 
   return (
-    <div className="border-t border-gray-700 bg-chat-input p-4">
+    <div className="border-t border-gray-700 dark:border-gray-700 bg-chat-input dark:bg-chat-input p-4 transition-colors duration-200">
       {/* Selected Emotion Display */}
       {selectedEmotion && (
         <div className="flex items-center space-x-2 mb-2">
-          <span className="text-sm text-gray-400">Emotion:</span>
+          <span className="text-sm text-gray-400 dark:text-gray-400">Emotion:</span>
           <span
   className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-sky-300 text-slate-900`}>
             {emotions.find(e => e.key === selectedEmotion)?.label}
           </span>
           <button
             onClick={() => setSelectedEmotion(null)}
-            className="text-gray-400 hover:text-white transition-colors duration-200"
+            className="text-gray-400 dark:text-gray-400 hover:text-white dark:hover:text-white transition-colors duration-200"
           >
             <X className="w-4 h-4" />
           </button>
@@ -92,14 +92,14 @@ export function ChatInput({ onSendMessage, placeholder = "Type a message...", di
         <div className="relative" ref={emotionPickerRef}>
           <button
             onClick={() => setShowEmotions(!showEmotions)}
-            className="p-2 text-gray-400 hover:text-white transition-colors duration-200 rounded-md hover:bg-chat-hover"
+            className="p-2 text-gray-400 dark:text-gray-400 hover:text-white dark:hover:text-white transition-colors duration-200 rounded-md hover:bg-chat-hover dark:hover:bg-chat-hover"
             title="Add emotion"
           >
             <Smile className="w-5 h-5 text-yellow-300 mb-2.5" />
           </button>
           
           {showEmotions && (
-            <div className="absolute bottom-full left-1/2 mb-2 min-w-max bg-chat-sidebar border border-gray-600 rounded-lg shadow-lg p-2 z-10">
+            <div className="absolute bottom-full left-1/2 mb-2 min-w-max bg-chat-sidebar dark:bg-chat-sidebar border border-gray-600 dark:border-gray-600 rounded-lg shadow-lg p-2 z-10">
               <div className="grid grid-cols-5 gap-2">
                 {emotions.map((emotion) => (
                   <button
@@ -129,7 +129,7 @@ export function ChatInput({ onSendMessage, placeholder = "Type a message...", di
             onKeyPress={handleKeyPress}
             placeholder={placeholder}
             disabled={disabled}
-            className="w-full bg-chat-input border textarea-scrollbar border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none max-h-32"
+            className="w-full bg-chat-input dark:bg-chat-input border textarea-scrollbar border-gray-600 dark:border-gray-600 rounded-lg px-4 py-3 text-white dark:text-white placeholder-gray-400 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none max-h-32 transition-colors duration-200"
             rows={1}
           />
         </div>
@@ -137,14 +137,14 @@ export function ChatInput({ onSendMessage, placeholder = "Type a message...", di
         {/* Action Buttons */}
         <div className="flex items-center space-x-2">
           <button
-            className="p-2 text-gray-400 hover:text-white transition-colors duration-200 rounded-md hover:bg-chat-hover"
+            className="p-2 text-gray-400 dark:text-gray-400 hover:text-white dark:hover:text-white transition-colors duration-200 rounded-md hover:bg-chat-hover dark:hover:bg-chat-hover"
             title="Attach file"
           >
             <Paperclip className="w-5 h-5" />
           </button>
           
           <button
-            className="p-2 text-gray-400 hover:text-white transition-colors duration-200 rounded-md hover:bg-chat-hover"
+            className="p-2 text-gray-400 dark:text-gray-400 hover:text-white dark:hover:text-white transition-colors duration-200 rounded-md hover:bg-chat-hover dark:hover:bg-chat-hover"
             title="Voice message"
           >
             <Mic className="w-5 h-5" />

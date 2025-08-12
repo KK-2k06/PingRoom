@@ -5,6 +5,7 @@ import { Sidebar } from '@/components/chat/Sidebar'
 import { Message } from '@/components/chat/Message'
 import { ChatInput } from '@/components/chat/ChatInput'
 import { Loading } from '@/components/ui/Loading'
+import { ThemeToggle } from '@/components/ui/ThemeToggle'
 import { generateGuestName, generateRoomId } from '@/lib/utils'
 
 interface ChatMessage {
@@ -202,7 +203,10 @@ export default function Home() {
   }
 
   return (
-    <div className="flex h-screen bg-chat-bg">
+    <div className="flex h-screen bg-chat-bg dark:bg-chat-bg transition-colors duration-200">
+      {/* Theme Toggle Button */}
+      <ThemeToggle />
+      
       {/* Sidebar */}
       <Sidebar
         currentRoom={currentRoom}
