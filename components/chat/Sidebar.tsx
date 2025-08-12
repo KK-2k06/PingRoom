@@ -14,6 +14,7 @@ import {
 } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { generateGuestName } from '@/lib/utils'
+import { ThemeToggle } from '@/components/ui/ThemeToggle'
 
 interface Room {
   id: string
@@ -60,7 +61,7 @@ export function Sidebar({
   const currentRoomData = rooms.find(room => room.id === currentRoom)
 
   return (
-    <div className="sidebar w-64 flex flex-col h-full bg-chat-sidebar dark:bg-chat-sidebar border-r border-gray-700 dark:border-gray-700 transition-colors duration-200">
+    <div className="sidebar w-64 flex flex-col h-full bg-chat-sidebar dark:bg-chat-sidebar border-r border-gray-700 dark:border-gray-700 transition-all duration-300">
       {/* Header */}
               <div className="p-4 border-b border-gray-700 dark:border-gray-700">
           <div className="flex items-center justify-between">
@@ -210,16 +211,22 @@ export function Sidebar({
       </div>
 
       {/* Footer */}
-      <div className="p-4 border-t border-gray-700 dark:border-gray-700">
+      <div className="p-4 border-t border-gray-700 dark:border-gray-700 transition-colors duration-300">
         <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-400 to-secondary-500 flex items-center justify-center text-white font-bold text-xs">
+          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-400 to-secondary-500 flex items-center justify-center text-white font-bold text-xs transition-colors duration-300">
             {guestName ? guestName.charAt(0).toUpperCase() : 'G'}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm text-gray-200 dark:text-gray-200 truncate">{guestName || 'Guest'}</p>
-            <p className="text-xs text-green-400">Online</p>
+            <p className="text-sm text-gray-200 dark:text-gray-200 truncate transition-colors duration-300">
+              {guestName || 'Guest'}
+            </p>
+            <p className="text-xs">
+              <span className="inline-block w-2 h-2 rounded-full bg-green-400 mr-1"></span>
+              <span className="text-gray-400 dark:text-gray-300 transition-colors duration-300">Online</span>
+            </p>
           </div>
-          <button className="p-1 text-gray-400 dark:text-gray-400 hover:text-white dark:hover:text-white transition-colors duration-200">
+          <ThemeToggle />
+          <button className="p-1 text-gray-400 dark:text-gray-400 hover:text-white dark:hover:text-white transition-all duration-300">
             <Settings className="w-4 h-4" />
           </button>
         </div>

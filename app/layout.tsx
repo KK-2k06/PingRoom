@@ -16,8 +16,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} antialiased transition-colors duration-200`}>
+    <html lang="en" className="transition-colors duration-300">
+      <body className="transition-colors duration-300">
         <ThemeProvider>
           {children}
         </ThemeProvider>
