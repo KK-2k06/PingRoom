@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/lib/theme'
+import { AuthProvider } from '@/lib/auth-context'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,7 +20,9 @@ export default function RootLayout({
     <html lang="en" className="transition-colors duration-300">
       <body className="transition-colors duration-300">
         <ThemeProvider>
-          {children}
+          <AuthProvider>
+            {children}
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

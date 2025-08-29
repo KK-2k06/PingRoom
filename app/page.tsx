@@ -5,6 +5,7 @@ import { Sidebar } from '@/components/chat/Sidebar'
 import { Message } from '@/components/chat/Message'
 import { ChatInput } from '@/components/chat/ChatInput'
 import { Loading } from '@/components/ui/Loading'
+import { ProtectedRoute } from '@/components/auth/ProtectedRoute'
 import { generateGuestName, generateRoomId } from '@/lib/utils'
 
 interface ChatMessage {
@@ -201,45 +202,47 @@ export default function Home() {
     return <Loading />
   }
 
-  return (
-    <div className="flex h-screen bg-chat-bg dark:bg-chat-bg transition-colors duration-200">
-      
-      {/* Sidebar */}
-      <Sidebar
-        currentRoom={currentRoom}
-        rooms={rooms}
-        users={users}
-        onRoomSelect={handleRoomSelect}
-        onCreateRoom={handleCreateRoom}
-        onEndRoom={handleEndRoom}
-        onEditRoom={handleEditRoom}
-      />
-
-      {/* Main Chat Area */}
-      <div className="flex-1 flex flex-col">
-        {/* Messages */}
-        <div className="flex-1 overflow-y-auto custom-scrollbar p-4">
-          <div className="space-y-4">
-            {messages.map((message) => (
-              <Message
-                key={message.id}
-                {...message}
-                isOwn={message.sender.id === 'current-user'}
-                onEdit={handleMessageEdit}
-                onDelete={handleMessageDelete}
-                onReact={handleMessageReact}
-              />
-            ))}
-            <div ref={messagesEndRef} />
-          </div>
-        </div>
-
-        {/* Chat Input */}
-        <ChatInput
-          onSendMessage={handleSendMessage}
-          placeholder="Type a message..."
+    return (
+    <ProtectedRoute>
+      <div className="flex h-screen bg-chat-bg dark:bg-chat-bg transition-colors duration-200">
+        
+        {/* Sidebar */}
+        <Sidebar
+          currentRoom={currentRoom}
+          rooms={rooms}
+          users={users}
+          onRoomSelect={handleRoomSelect}
+          onCreateRoom={handleCreateRoom}
+          onEndRoom={handleEndRoom}
+          onEditRoom={handleEditRoom}
         />
+
+        {/* Main Chat Area */}
+        <div className="flex-1 flex flex-col">
+          {/* Messages */}
+          <div className="flex-1 overflow-y-auto custom-scrollbar p-4">
+            <div className="space-y-4">
+              {messages.map((message) => (
+                <Message
+                  key={message.id}
+                  {...message}
+                  isOwn={message.sender.id === 'current-user'}
+                  onEdit={handleMessageEdit}
+                  onDelete={handleMessageDelete}
+                  onReact={handleMessageReact}
+                />
+              ))}
+              <div ref={messagesEndRef} />
+            </div>
+          </div>
+
+          {/* Chat Input */}
+          <ChatInput
+            onSendMessage={handleSendMessage}
+            placeholder="Type a message..."
+          />
+        </div>
       </div>
-    </div>
+    </ProtectedRoute>
   )
 }
