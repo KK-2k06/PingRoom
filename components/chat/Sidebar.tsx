@@ -11,12 +11,14 @@ import {
   MoreVertical,
   Edit,
   Trash2,
-  LogOut
+  LogOut,
+  Bot
 } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { generateGuestName } from '@/lib/utils'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
 import { useAuth } from '@/lib/auth-context'
+import Link from 'next/link'
 
 interface Room {
   id: string
@@ -180,6 +182,16 @@ export function Sidebar({
           </div>
         </div>
 
+        {/* Chatbot Button */}
+        <div className="p-4 border-t border-gray-700 dark:border-gray-700">
+          <Link href="/chatbot" passHref>
+            <Button className="w-full justify-start bg-chat-hover dark:bg-chat-hover text-gray-300 dark:text-gray-300 hover:text-white dark:hover:text-white">
+              <Bot className="w-4 h-4 mr-2" />
+              AI Chatbot
+            </Button>
+          </Link>
+        </div>
+
         {/* Users */}
         {showUserList && (
           <div className="p-4 border-t border-gray-700 dark:border-gray-700">
@@ -213,34 +225,28 @@ export function Sidebar({
         )}
       </div>
 
-      {/* Footer */}
-      <div className="p-4 border-t border-gray-700 dark:border-gray-700 transition-colors duration-300">
+      {/* User Profile and Settings */}
+      <div className="p-4 border-t border-gray-700 dark:border-gray-700 flex items-center justify-between">
+        <div className="flex items-center space-x-3">
+          <div className="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center text-white font-bold text-xs">
+            {user?.name?.charAt(0).toUpperCase() || guestName.charAt(0).toUpperCase()}
+          </div>
+          <span className="text-white text-sm font-semibold truncate">
+            {user?.name || guestName}
+          </span>
+        </div>
         <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-400 to-secondary-500 flex items-center justify-center text-white font-bold text-xs transition-colors duration-300">
-            {user?.name?.charAt(0).toUpperCase() || guestName?.charAt(0).toUpperCase() || 'G'}
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-sm text-gray-200 dark:text-gray-200 truncate transition-colors duration-300">
-              {user?.name || guestName || 'Guest'}
-            </p>
-            <p className="text-xs">
-              <span className="inline-block w-2 h-2 rounded-full bg-green-400 mr-1"></span>
-              <span className="text-gray-400 dark:text-gray-300 transition-colors duration-300">Online</span>
-            </p>
-          </div>
           <ThemeToggle />
-          <button className="p-1 text-gray-400 dark:text-gray-400 hover:text-white dark:hover:text-white transition-all duration-300">
-            <Settings className="w-4 h-4" />
-          </button>
-          <button 
+          <Button
             onClick={logout}
-            className="p-1 text-gray-400 dark:text-gray-400 hover:text-red-400 dark:hover:text-red-400 transition-all duration-300"
-            title="Logout"
+            size="sm"
+            variant="ghost"
+            className="text-gray-400 hover:text-white"
           >
             <LogOut className="w-4 h-4" />
-          </button>
+          </Button>
         </div>
       </div>
     </div>
-  )
+  );
 }
