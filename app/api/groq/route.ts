@@ -8,7 +8,7 @@ export async function POST(request: Request) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer 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`,
+        'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
       },
       body: JSON.stringify({
         model: 'llama3-8b-8192',
